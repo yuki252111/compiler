@@ -1,0 +1,59 @@
+int let isLegal(var K as array[8] of int,var size as int,var index as int,var pos as int)
+var i as int;
+var isLeal as int;
+i=0;
+isLeal=1;
+while(i<index)
+	if(K[i]==pos)
+	then
+		isLeal=0;
+	endif
+	if(pos-K[i]==index-i)
+	then
+		isLeal=0;
+	endif
+	if(pos-K[i]==i-index)
+	then
+		isLeal=0;
+	endif
+	i=i+1;
+endwhile
+return isLeal;
+endfunc
+
+void let eightQueen(var K as array[8] of int,var size as int,var index as int)
+var i as int;
+var isLeal as int;
+if(index<size)
+then
+i=0;
+isLeal=0;
+while(i<size)
+   isLeal=isLegal(K,size,index,i);
+   if(isLeal==1)
+   then
+		K[index]=i;
+		index=index+1;
+		eightQueen(K,size,index);
+		index=index-1;
+   endif
+   i=i+1;
+endwhile
+else
+printa(K, size);
+endif
+endfunc
+
+int let main()
+var K as array[8] of int;
+K[0] = 1;
+K[1] = 1;
+K[2] = 1;
+K[3] = 1;
+K[4] = 1;
+K[5] = 1;
+K[6] = 1;
+K[7] = 1;
+eightQueen(K,8,0);
+return 0;
+endfunc

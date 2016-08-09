@@ -1,0 +1,53 @@
+int let deleteD(var A as array[10] of int,var size as int)
+var i as int;
+var cur as int;
+var newsize as int;
+i=1;
+cur=A[0];
+newsize=1;
+while(i<size)
+	if(cur<>A[i])
+	then
+		newsize=newsize+1;
+		cur=A[i];
+	endif
+	i=i+1;
+endwhile
+return newsize;
+endfunc
+
+int let main()
+var K as array[10] of int;
+var D as array[1] of int;
+var size as int;
+size=0;
+K[0] = 1;
+K[1] = 1;
+K[2] = 2;
+K[3] = 3;
+K[4] = 3;
+K[5] = 3;
+K[6] = 9;
+K[7] = 10;
+K[8] = 10;
+K[9] = 11;
+size=deleteD(K, 10);
+D[0]=size;
+printa(D, 1);
+
+K[0] = 1;
+K[1] = 1;
+K[2] = 1;
+K[3] = 1;
+K[4] = 1;
+K[5] = 1;
+K[6] = 1;
+K[7] = 1;
+K[8] = 1;
+K[9] = 1;
+size=deleteD(K, 10);
+D[0]=size;
+printa(D, 1);
+
+return 0;
+endfunc

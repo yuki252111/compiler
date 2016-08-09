@@ -1,0 +1,47 @@
+void let  _QuickSort(var A as array[10] of int, var iLo as int, var iHi as int)
+var Lo as int;
+var Hi as int;
+var Mid as int;
+var temp as int;
+Lo = iLo; 
+Hi = iHi; 
+Mid = A[(Lo + Hi) / 2]; 
+while (Lo < Hi)
+while (A[Lo] < Mid) Lo = Lo + 1; endwhile
+while (A[Hi] > Mid)  Hi = Hi - 1; endwhile
+if (Lo <= Hi) then  
+temp = A[Lo];
+A[Lo] = A[Hi];
+A[Hi] = temp;
+Lo = Lo + 1; 
+Hi = Hi - 1; 
+endif
+endwhile 
+if (Hi > iLo) then _QuickSort(A, iLo, Hi); endif
+if (Lo < iHi) then _QuickSort(A, Lo, iHi); endif
+endfunc
+
+void let QuickSort(var A as array[10] of int, var size as int) 
+_QuickSort(A, 0); 
+endfunc
+
+int let main()
+var a as int;
+var K as array[10] of int;
+var b as int;
+a = 1;
+b = 10;
+K[0] = 4;
+K[1] = 2;
+K[2] = 4;
+K[3] = 6;
+K[4] = 1;
+K[5] = 3;
+K[6] = 9;
+K[7] = 1;
+K[8] = 10;
+K[9] = 11;
+QuickSort(K, 10);
+printa(K, b);
+return 0;
+endfunc
